@@ -37,7 +37,7 @@ if __name__ == "__main__":
     target = "count"
     _X = train_df.drop(columns=[target])
     y = train_df[target]
-    X = preprocess_pipeline.fit_transform(X=_X)
+    X = preprocess_pipeline.fit_transform(X=_X, y=y)
 
     # Data storage - 피처 데이터 저장
     if not os.path.exists(os.path.join(DATA_PATH, "storage")):
@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
     # Set experiment name for mlflow
     logger.debug("Set an experiment for mlflow...")
-    experiment_name = "bike_sharing_experiment1"
+    experiment_name = "bike_sharing_experiment2"
     mlflow.set_experiment(experiment_name=experiment_name)
     mlflow.set_tracking_uri("./mlruns")
 

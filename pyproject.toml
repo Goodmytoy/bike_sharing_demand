@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "Goodmytoy", email = "35749417+Goodmytoy@users.noreply.github.com"},
+    {name = "Brady Kim", email = "81638919+fenzhantw@users.noreply.github.com"},
 ]
 dependencies = [
     "bentoml==1.2.6",
@@ -18,7 +19,8 @@ dependencies = [
     "rich==13.7.1",
     "seaborn==0.13.2",
 ]
-requires-python = "==3.9.*"
+
+requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
 

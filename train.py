@@ -37,7 +37,7 @@ if __name__ == "__main__":
     target = "count"
     _X = train_df.drop(columns=[target])
     y = train_df[target]
-    X = preprocess_pipeline.fit_transform(X=_X, y=y)
+    X = preprocess_pipeline.fit_transform(X=_X)
 
     # Data storage - 피처 데이터 저장
     if not os.path.exists(os.path.join(DATA_PATH, "storage")):
@@ -50,9 +50,9 @@ if __name__ == "__main__":
     logger.debug("Save feature data...")
 
     params_candidates = {
-        "learning_rate": [0.01, 0.05, 0.1],
-        "max_depth": [3, 4, 5, 6],
-        "max_features": [1.0, 0.9, 0.8, 0.7],
+        "learning_rate": [0.01, 0.1],
+        "max_depth": [5, 6],
+        "max_features": [1.0, 0.8],
     }
 
     param_set = get_param_set(params=params_candidates)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         logger.info(f"{run_name}: {params}")
 
         with mlflow.start_run(run_name=f"Run {i}"):
-            regr = HistGradientBoostingRegressor(**params)
+            regr = GradientBoostingRegressor(**params)
             # 전처리 이후 모델 순서로 파이프라인 작성
             pipeline = Pipeline(
                 # TODO: 전처리 파이프라인와 모델을 파이프라인으로 묶을 것
